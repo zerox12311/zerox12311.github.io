@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>JasperReport Studio Pass Dataset | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,後端,frontend,backend,design,nodejs,JavaScript,asp.net,Android,Java" />
+  
+
+  <meta name="description" content="前言
+JasperReport 是一套Java開發的OpenSource這種沒幫助的話就不用多說了，自己GOOGLE
+這篇是給已經會用很基礎的JasperReport使用者看的，更基礎的教學之後有機會再寫  
+因為之前遇到一個很鳥的問題所以在這邊紀錄一下怎麼解決問題是在主表用DataSet and Query Dialog做撈資料的動作  
+撈回來的Json長這樣:1234567891011121">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JasperReport Studio Pass Dataset">
+<meta property="og:url" content="http://yoursite.com/2016/09/10/JasperReport-Studio-Pass-Dataset/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言
+JasperReport 是一套Java開發的OpenSource這種沒幫助的話就不用多說了，自己GOOGLE
+這篇是給已經會用很基礎的JasperReport使用者看的，更基礎的教學之後有機會再寫  
+因為之前遇到一個很鳥的問題所以在這邊紀錄一下怎麼解決問題是在主表用DataSet and Query Dialog做撈資料的動作  
+撈回來的Json長這樣:1234567891011121">
+<meta property="og:updated_time" content="2016-09-10T03:24:16.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JasperReport Studio Pass Dataset">
+<meta name="twitter:description" content="前言
+JasperReport 是一套Java開發的OpenSource這種沒幫助的話就不用多說了，自己GOOGLE
+這篇是給已經會用很基礎的JasperReport使用者看的，更基礎的教學之後有機會再寫  
+因為之前遇到一個很鳥的問題所以在這邊紀錄一下怎麼解決問題是在主表用DataSet and Query Dialog做撈資料的動作  
+撈回來的Json長這樣:1234567891011121">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">BOX</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">BOX</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            首頁
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分類
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            標籤
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            關於
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用環境"><span class="toc-text">使用環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#實做"><span class="toc-text">實做</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#困難點"><span class="toc-text">困難點</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-JasperReport-Studio-Pass-Dataset" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">JasperReport Studio Pass Dataset</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Lux Protoss</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/09/10/JasperReport-Studio-Pass-Dataset/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>JasperReport 是一套Java開發的OpenSource這種沒幫助的話就不用多說了，自己GOOGLE</p>
+<p><code>這篇是給已經會用很基礎的JasperReport使用者看的，更基礎的教學之後有機會再寫</code>  </p>
+<p>因為之前遇到一個很鳥的問題所以在這邊紀錄一下怎麼解決<br>問題是在主表用DataSet and Query Dialog做撈資料的動作  </p>
+<p>撈回來的Json長這樣:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"errCode":0,</div><div class="line">"errMessage":"",</div><div class="line">"token":null,</div><div class="line">"value":[&#123;</div><div class="line">      "NAME":"AAA",</div><div class="line">      "PHONE":"09XXXXXXXXX",</div><div class="line">      "ADDRESS":[&#123;</div><div class="line">            "addr":"123",</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">            "addr":"456",</div><div class="line">      &#125;],</div><div class="line">      &#123;</div><div class="line">      "NAME":"BBB",</div><div class="line">      "PHONE":"09XXXXXXXXX",</div><div class="line">      "ADDRESS":[&#123;</div><div class="line">            "addr":"321",</div><div class="line">      &#125;]</div><div class="line">]&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>總共分三層:</p>
+<blockquote>
+<p>第一層是用來確定回傳成功或失敗的<br>第二層是包在第一層的value裡面的資料<br>第三層是value裡面資料的集合屬性，例如一個人可能會有好幾個住址，我就用List包起來</p>
+</blockquote>
+<p>之前遇到的問題是在JasperStudio裡面主表綁定欄位需要設定一個Root Path，<code>這就是很靠盃的點</code></p>
+<p>Root Path是甚麼呢?<br>以上面的Json為例子，假設我把Root Path設定為value，綁定的欄位就只有在value底下的才會有值<br>所以在我綁定errCode的情況下，我把Root Path設定為value的話，在報表裡面會顯示null</p>
+<p>重點來了，如果綁定是在value底下的再下一層呢??</p>
+<p>他會很<code>機掰</code>的幫你把他轉成Json，也就是說假設我綁定NAME，在第一張主報表裡面顯示，他會顯示AAA<br>如果我綁定ADDRESS.addr他就會顯示[{“addr”:”123”},{“addr”:”456”}]</p>
+<p>大家都說要顯示這樣的資訊應該要用List物件或者SubReoprt來顯示，但是重點是如何把主報表查詢到的結果傳到子報表呢</p>
+<p>查了超久的stackoverflow，都寫得模糊不清，後來我參照了幾十篇的文章做交叉比對後終於給我試出來了</p>
+<h2 id="使用環境"><a href="#使用環境" class="headerlink" title="使用環境"></a>使用環境</h2><hr>
+<p>使用JasperRepost Studio 6.2 version</p>
+<p>資料來源使用WebService，呼叫.net backend api取得Json</p>
+<h2 id="實做"><a href="#實做" class="headerlink" title="實做"></a>實做</h2><ol>
+<li>先拉一個List物件到表上  </li>
+<li>然後選Create a List using a new dataset，下一步  </li>
+<li>Dataset name隨便取一個，下方選Create an empty dataset，選完後下一步  </li>
+<li>選擇Use a JRDatasource expression，下方欄位填寫<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((net.sf.jasperreports.engine.data.JsonDataSource)$P&#123;REPORT_DATA_SOURCE&#125;).subDataSource(&quot;???&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>???為你主報表<code>Root Path</code>為基準，底下的List名稱<br>以我的Json為例子，我要綁定ADDRESS底下的東西，我就要把ADDRESS傳到子報表去，而我主報表的Root Path是value，所以???就寫成ADDRESS<br>結果長這樣<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">((net.sf.jasperreports.engine.data.JsonDataSource)$P&#123;REPORT_DATA_SOURCE&#125;).subDataSource(&quot;ADDRESS&quot;)</div></pre></td></tr></table></figure></p>
+<p>這一串的目的是把主報表查詢到的ADDRESS List物件傳到子報表去<br>如果你的JSON是有更多層的，可以用<code>.</code>接著下一層<br>假設我的JSON  ADDRESS裡面還有一個COUNTRY的List的話，就可以用<code>ADDRESS.COUNTRY</code>傳出去</p>
+<p>大部分的教學都說到這裡就可以用了，根本不知道從哪裡開始綁定，緊接著往下一步看  </p>
+<ol>
+<li>在<code>子報表</code>的DataSet裡<code>自己手動</code>建立一個fields，其<code>欄位名稱為ADDRESS底下的物件名稱</code><br>以我的JSON為例子，ADDRESS裡面有個addr，我的fields就取名addr，接著拉到子報表裡面就可以顯示addr喇!!!!</li>
+</ol>
+<hr>
+<h2 id="困難點"><a href="#困難點" class="headerlink" title="困難點"></a>困難點</h2><p>因為這是Java的工具，所以支援Java Bean直接傳，大部分stackoverflow問的問題都是用java上遇到的，而我是.net根本不一樣，再不然就是只給到上述第4點就跟你說可以用了</p>
+<p>而且第一次使用不知道要以Root Path為基準的話綁定錯誤<code>並不會顯示Null</code>，<code>而是甚麼都沒有</code>，就像是報表上沒有那個物件似的，根本不知道是你路徑寫錯還是BUG   </p>
+<p>紀錄就到這邊拉~~</p>
+<hr>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              首頁
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分類
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              標籤
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              關於
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/09/10/JasperReport-Studio-Pass-Dataset/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
