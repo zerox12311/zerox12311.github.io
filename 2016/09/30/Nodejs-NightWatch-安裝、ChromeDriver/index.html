@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Nodejs NightWatch 安裝、ChromeDriver | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,後端,frontend,backend,design,nodejs,JavaScript,asp.net,Android,Java" />
+  
+
+  <meta name="description" content="前言最近NightWatch好像很紅，加上自己測試頁面測試到快吐血，一個頁面幾十個欄位要輸入，就找了個最近很夯的NightWatch來玩玩，因為公司寫C#，所以我的環境是Win10
+安裝所需要的套件:
+
+安裝Nodejs  (執行NightWatch)安裝Java JDK (用來啟動selenium server)   
+
+開始安裝跟設定啦~~~   
+Step 1.  安裝nightwatch1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs NightWatch 安裝、ChromeDriver">
+<meta property="og:url" content="http://yoursite.com/2016/09/30/Nodejs-NightWatch-安裝、ChromeDriver/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言最近NightWatch好像很紅，加上自己測試頁面測試到快吐血，一個頁面幾十個欄位要輸入，就找了個最近很夯的NightWatch來玩玩，因為公司寫C#，所以我的環境是Win10
+安裝所需要的套件:
+
+安裝Nodejs  (執行NightWatch)安裝Java JDK (用來啟動selenium server)   
+
+開始安裝跟設定啦~~~   
+Step 1.  安裝nightwatch1">
+<meta property="og:updated_time" content="2016-09-30T09:21:37.055Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs NightWatch 安裝、ChromeDriver">
+<meta name="twitter:description" content="前言最近NightWatch好像很紅，加上自己測試頁面測試到快吐血，一個頁面幾十個欄位要輸入，就找了個最近很夯的NightWatch來玩玩，因為公司寫C#，所以我的環境是Win10
+安裝所需要的套件:
+
+安裝Nodejs  (執行NightWatch)安裝Java JDK (用來啟動selenium server)   
+
+開始安裝跟設定啦~~~   
+Step 1.  安裝nightwatch1">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">BOX</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">BOX</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            首頁
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分類
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            標籤
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            關於
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安裝"><span class="toc-text">安裝</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Nodejs-NightWatch-安裝、ChromeDriver" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Nodejs NightWatch 安裝、ChromeDriver</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Lux Protoss</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/09/30/Nodejs-NightWatch-安裝、ChromeDriver/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近NightWatch好像很紅，加上自己測試頁面測試到快吐血，一個頁面幾十個欄位要輸入，就找了個最近很夯的NightWatch來玩玩，因為公司寫C#，所以我的環境是Win10</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>所需要的套件:</p>
+<blockquote>
+<p>安裝Nodejs  (執行NightWatch)<br>安裝Java JDK (用來啟動selenium server)   </p>
+</blockquote>
+<p>開始安裝跟設定啦~~~   </p>
+<p>Step 1.  安裝nightwatch<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g nightwatch</div></pre></td></tr></table></figure></p>
+<p>Step 2.  下載Selenium Standalone穩定版(目前我用2.53版)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://selenium-release.storage.googleapis.com/index.html</div></pre></td></tr></table></figure></p>
+<p>Step 3.  下載ChromeDriver(根據你Chrome的版本下載相對應的版本)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://sites.google.com/a/chromium.org/chromedriver/</div></pre></td></tr></table></figure></p>
+<p>Step 3.  在你想要的地方建立目錄，並在下一層建立一個bin資料夾，並把Selenium.jar、chromedreiver.exe放在bin裡面<br>現在看起來像這樣<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">├── C:/</div><div class="line">│   ├── nighttest/</div><div class="line">│       ├── google.js     //測試檔案</div><div class="line">│       └── bin</div><div class="line">│           ├── chromedriver.exe</div><div class="line">│           ├── cselenium-server-standalone-2.53.0.jar</div></pre></td></tr></table></figure></p>
+<p>Step 4.  設定nightwatch.json檔<br>因為我們採用global安裝，所以他的設定檔位置在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\&#123;使用者&#125;\AppData\Roaming\npm\node_modules\nightwatch\bin</div></pre></td></tr></table></figure></p>
+<p>我已經修改過可以run的nightwatch.json如下:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"src_folders"</span>: [</div><div class="line">    <span class="string">"./examples/tests"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"output_folder"</span>: <span class="string">"./examples/reports"</span>,</div><div class="line">  <span class="attr">"custom_commands_path"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"page_objects_path"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"custom_assertions_path"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"globals_path"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"live_output"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"parallel_process_delay"</span>: <span class="number">10</span>,</div><div class="line">  <span class="attr">"disable_colors"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"test_workers"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"selenium"</span>: &#123;</div><div class="line">    <span class="attr">"start_process"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"server_path"</span>: <span class="string">"./bin/selenium-server-standalone-2.53.0.jar"</span>,</div><div class="line">    <span class="attr">"log_path"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="attr">"port"</span>: <span class="number">4444</span>,</div><div class="line">    <span class="attr">"cli_args"</span>: &#123;</div><div class="line">      <span class="attr">"webdriver.chrome.driver"</span>: <span class="string">"./bin/chromedriver.exe"</span>,</div><div class="line">      <span class="attr">"webdriver.ie.driver"</span>: <span class="string">""</span>,</div><div class="line">      <span class="attr">"webdriver.firefox.profile"</span>: <span class="string">""</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"test_settings"</span>: &#123;</div><div class="line">    <span class="attr">"default"</span>: &#123;</div><div class="line">      <span class="attr">"launch_url"</span>: <span class="string">"http://localhost"</span>,</div><div class="line">      <span class="attr">"selenium_host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">      <span class="attr">"selenium_port"</span>: <span class="number">4444</span>,</div><div class="line">      <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"disable_colors"</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">"screenshots"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"firefox"</span>,</div><div class="line">        <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"chrome"</span>: &#123;</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">        <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"saucelabs"</span>: &#123;</div><div class="line">      <span class="attr">"selenium_host"</span>: <span class="string">"ondemand.saucelabs.com"</span>,</div><div class="line">      <span class="attr">"selenium_port"</span>: <span class="number">80</span>,</div><div class="line">      <span class="attr">"username"</span>: <span class="string">"$&#123;SAUCE_USERNAME&#125;"</span>,</div><div class="line">      <span class="attr">"access_key"</span>: <span class="string">"$&#123;SAUCE_ACCESS_KEY&#125;"</span>,</div><div class="line">      <span class="attr">"use_ssl"</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"output"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"screenshots"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"on_failure"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"name"</span>: <span class="string">"test-example"</span>,</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"firefox"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"globals"</span>: &#123;</div><div class="line">        <span class="attr">"myGlobal"</span>: <span class="string">"some_sauce_global"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"selenium"</span>: &#123;</div><div class="line">        <span class="attr">"start_process"</span>: <span class="literal">false</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"phantomjs"</span>: &#123;</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"phantomjs"</span>,</div><div class="line">        <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"phantomjs.binary.path"</span>: <span class="string">"/path/to/phantomjs"</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"browserstack"</span>: &#123;</div><div class="line">      <span class="attr">"selenium"</span>: &#123;</div><div class="line">        <span class="attr">"start_process"</span>: <span class="literal">false</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"selenium_host"</span>: <span class="string">"hub.browserstack.com"</span>,</div><div class="line">      <span class="attr">"selenium_port"</span>: <span class="number">80</span>,</div><div class="line">      <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"name"</span>: <span class="string">"test-example"</span>,</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"firefox"</span>,</div><div class="line">        <span class="attr">"browserstack.user"</span>: <span class="string">"..."</span>,</div><div class="line">        <span class="attr">"browserstack.key"</span>: <span class="string">"..."</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"testingbot"</span>: &#123;</div><div class="line">      <span class="attr">"selenium_host"</span>: <span class="string">"hub.testingbot.com"</span>,</div><div class="line">      <span class="attr">"selenium_port"</span>: <span class="number">80</span>,</div><div class="line">      <span class="attr">"apiKey"</span>: <span class="string">"$&#123;TB_KEY&#125;"</span>,</div><div class="line">      <span class="attr">"apiSecret"</span>: <span class="string">"$&#123;TB_SECRET&#125;"</span>,</div><div class="line">      <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"output"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"screenshots"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"on_failure"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">        <span class="attr">"name"</span>: <span class="string">"test-example"</span>,</div><div class="line">        <span class="attr">"browserName"</span>: <span class="string">"firefox"</span></div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"selenium"</span>: &#123;</div><div class="line">        <span class="attr">"start_process"</span>: <span class="literal">false</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你們是要自己設定chrome的話，需要注意”webdriver.chrome.driver”: “./bin/chromedriver.exe”裡面的./bin是”所要測試的檔案所在目錄底下的bin”   </p>
+<p>然後這些也要設定<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">"start_process": true   </div><div class="line">"server_path": "./bin/selenium-server-standalone-2.53.0.jar"   </div><div class="line">"chrome": &#123;   </div><div class="line">      "desiredCapabilities": &#123;   </div><div class="line">        "browserName": "chrome",   </div><div class="line">        "javascriptEnabled": true,   </div><div class="line">        "acceptSslCerts": true   </div><div class="line">      &#125;</div></pre></td></tr></table></figure></p>
+<p>Step 5.   執行</p>
+<p>最重要的就是要如何跑呢!<br>切到測試檔所在目錄底下<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nightwatch -t google.js				&lt;&lt; 用預設的瀏覽器測試(firefox)</div><div class="line">$ nightwatch -t google.js <span class="_">-e</span> chrome		&lt;&lt; 只用chrome測試</div><div class="line">$ nightwatch -t google.js <span class="_">-e</span> chrome,default		&lt;&lt;同時用chrome跟firefox測試</div></pre></td></tr></table></figure></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              首頁
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分類
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              標籤
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              關於
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/09/30/Nodejs-NightWatch-安裝、ChromeDriver/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
